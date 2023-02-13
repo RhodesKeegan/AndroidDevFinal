@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FitnessFragment">
+
+    <fragment
+        android:id="@+id/FitnessFragment"
+        android:name="edu.msoe.healthfinal.FitnessFragment"
+        android:label="Fitness"
+        tools:layout="@layout/fitness_fragment">
+
+        <action
+            android:id="@+id/fitness_to_nutrition"
+            app:destination="@id/NutritionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/NutritionFragment"
+        android:name="edu.msoe.healthfinal.NutritionFragment"
+        android:label="Nutrition"
+        tools:layout="@layout/nutrition_fragment">
+
+        <action
+            android:id="@+id/nutrition_to_fitness"
+            app:destination="@id/FitnessFragment" />
+    </fragment>
+</navigation>
