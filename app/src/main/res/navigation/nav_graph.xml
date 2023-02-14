@@ -5,6 +5,16 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/FitnessFragment">
 
+
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="edu.msoe.healthfinal.SettingsFragment"
+        android:label="Settings"
+        tools:xml="@xml/preference_settings">
+
+
+    </fragment>
+
     <fragment
         android:id="@+id/FitnessFragment"
         android:name="edu.msoe.healthfinal.FitnessFragment"
@@ -14,6 +24,14 @@
         <action
             android:id="@+id/fitness_to_nutrition"
             app:destination="@id/NutritionFragment" />
+        <action
+            android:id="@+id/fitness_to_stat"
+            app:destination="@id/StatFragment"/>
+
+        <action
+            android:id="@+id/fitness_to_settings"
+            app:destination="@id/SettingsFragment"/>
+
     </fragment>
     <fragment
         android:id="@+id/NutritionFragment"
@@ -24,5 +42,32 @@
         <action
             android:id="@+id/nutrition_to_fitness"
             app:destination="@id/FitnessFragment" />
+        <action
+            android:id="@+id/nutrition_to_stat"
+            app:destination="@id/StatFragment"/>
+
+        <action
+            android:id="@+id/nutrition_to_settings"
+            app:destination="@id/SettingsFragment"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/StatFragment"
+        android:name="edu.msoe.healthfinal.StatFragment"
+        android:label="Stats"
+        tools:layout="@layout/stat_fragment">
+
+        <action
+            android:id="@+id/stat_to_fitness"
+            app:destination="@layout/fitness_fragment"/>
+
+        <action
+            android:id="@+id/stat_to_nutrition"
+            app:destination="@id/NutritionFragment"/>
+
+        <action
+            android:id="@+id/stat_to_settings"
+            app:destination="@id/SettingsFragment"/>
+
     </fragment>
 </navigation>

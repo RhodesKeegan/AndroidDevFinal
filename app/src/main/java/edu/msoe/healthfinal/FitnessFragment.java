@@ -41,12 +41,14 @@ public class FitnessFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.settings) {
-
+            NavHostFragment.findNavController(FitnessFragment.this)
+                    .navigate(R.id.fitness_to_settings);
         } else if (item.getItemId() == R.id.nutrition) {
             NavHostFragment.findNavController(FitnessFragment.this)
                     .navigate(R.id.fitness_to_nutrition);
         } else if (item.getItemId() == R.id.stats) {
-
+            NavHostFragment.findNavController(FitnessFragment.this)
+                    .navigate(R.id.fitness_to_stat);
         }
         return super.onOptionsItemSelected(item);
     }

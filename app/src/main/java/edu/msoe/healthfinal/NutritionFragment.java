@@ -43,12 +43,14 @@ public class NutritionFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.settings) {
-
+            NavHostFragment.findNavController(NutritionFragment.this)
+                    .navigate(R.id.nutrition_to_settings);
         } else if (item.getItemId() == R.id.fitness) {
             NavHostFragment.findNavController(NutritionFragment.this)
                     .navigate(R.id.nutrition_to_fitness);
         }else if (item.getItemId() == R.id.stats) {
-
+            NavHostFragment.findNavController(NutritionFragment.this)
+                    .navigate(R.id.nutrition_to_stat);
         }
         return super.onOptionsItemSelected(item);
     }
