@@ -3,4 +3,11 @@
     <string name="settings">Settings</string>
     <string name="stats">Stats</string>
     <string name="nutrition">Nutrition</string>
+    <string name="welcome_to_the_app_nfirst_lets_get_some_basic_information">Welcome to the app!\nFirst lets get some basic information</string>
+    <string name="what_is_your_gender">What is your gender?</string>
+    <string name="how_much_do_you_weigh">How much do you weigh?</string>
+    <string name="amount_of_sleep_night">Amount of sleep/night?</string>
+    <string name="fitness_goals">Fitness goals?</string>
+    <string name="weight">Weight</string>
+    <string name="submit">Submit</string>
 </resources>

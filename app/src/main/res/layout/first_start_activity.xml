@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border">
+
+
+    <TextView
+        android:id="@+id/welcomePrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
+        android:textStyle="bold"
+
+        android:fontFamily="sans-serif"
+        android:text="@string/welcome_to_the_app_nfirst_lets_get_some_basic_information"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/genderPrompt"
+        android:fontFamily="sans-serif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/what_is_your_gender"
+
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcomePrompt" />
+
+
+    <TextView
+        android:id="@+id/weightPrompt"
+        android:fontFamily="sans-serif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/how_much_do_you_weigh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genderPrompt" />
+
+    <TextView
+        android:id="@+id/sleepPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="20dp"
+        android:text="@string/amount_of_sleep_night"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weightPrompt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalPrompt"
+        android:text="@string/fitness_goals"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sleepPrompt"/>
+
+
+    <EditText
+        android:id="@+id/weightChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="64dp"
+        android:autofillHints="weight"
+        android:hint="@string/weight"
+        android:inputType="number"
+        android:labelFor="@id/weightPrompt"
+        app:layout_constraintStart_toEndOf="@id/weightPrompt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/sleepSpinner"
+        app:layout_constraintBottom_toBottomOf="@id/sleepPrompt"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalSpinner"
+        app:layout_constraintBottom_toBottomOf="@id/goalPrompt"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <Spinner
+        android:id="@+id/genderSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+
+        app:layout_constraintBottom_toBottomOf="@id/genderPrompt"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
