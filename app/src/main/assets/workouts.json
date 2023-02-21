@@ -1,0 +1,31 @@
+{
+  "day": "Monday",
+  "workout": {
+    "exercises":[
+      {
+      "name": "Back Squat",
+      "sets": 3,
+      "reps": 4,
+      "calories": 100},
+      {
+        "name": "Single Leg Leg Press",
+        "sets": 3,
+        "reps": 25,
+        "calories": 100
+      },
+      {
+        "name": "Single Leg RDL",
+        "sets": 8,
+        "reps": 8,
+        "calories": 100
+      },
+      {
+        "name": "Reverse Hyper",
+        "sets": 4,
+        "reps": 20,
+        "calories": 100
+      }
+    ],
+    "water": 1.5
+  }
+}
