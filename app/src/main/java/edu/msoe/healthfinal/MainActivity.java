@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import edu.msoe.healthfinal.databinding.ActivityMainBinding;
+import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         preferences = getSharedPreferences("edu.msoe.healthfinal", MODE_PRIVATE);
+        //preferences.edit().putBoolean("firstRun", true).apply();
+//        Realm instance = Realm.getDefaultInstance();
+//        instance.executeTransaction(new Realm.Transaction() {
+//            @Override
+//            public void execute(Realm realm) {
+//                realm.deleteAll();
+//            }
+//        });
 
 
     }
@@ -46,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         if(preferences.getBoolean("firstRun", true)){
             startActivity(new Intent(this, FirstStartActivity.class));
 
-            //preferences.edit().putBoolean("firstRun", false).apply();
+
         }
 
     }
