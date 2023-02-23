@@ -68,4 +68,18 @@ public class WorkoutSchema  extends RealmObject {
     public void setExercisesCompleted(int exercisesCompleted) {
         this.exercisesCompleted = exercisesCompleted;
     }
+
+    @Override
+    public String toString() {
+
+        String workoutNames= "";
+        for(WeightList weightList: workoutWeights){
+            workoutNames+=weightList.getWorkout() + " weight used: " + weightList.getWeightUsed() + " ,";
+        }
+
+        return "Workout " + id + ": {date completed: " + date +
+                ", total burned calories: " + caloriesBurned +
+                ", exercises completed: " + exercisesCompleted +
+                ", workouts done:[" + workoutNames + "]";
+    }
 }

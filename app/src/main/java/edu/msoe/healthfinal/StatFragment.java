@@ -11,12 +11,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.msoe.healthfinal.databinding.StatFragmentBinding;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class StatFragment extends Fragment {
 
     private StatFragmentBinding binding;
+    private List<WorkoutSchema> workoutData = new ArrayList<>();
 
     @Override
     public View onCreateView(
@@ -25,7 +33,34 @@ public class StatFragment extends Fragment {
     ) {
 
         binding = StatFragmentBinding.inflate(inflater, container, false);
+
+        RecyclerView myRecyclerView = binding.recyclerView;
+
+        myRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        RecyclerAdapter adapter = new RecyclerAdapter(workoutData);
+        myRecyclerView.setAdapter(adapter);
+
+
+        readData(adapter);
+
+
         return binding.getRoot();
+    }
+
+
+    private void readData(RecyclerAdapter adapter){
+        Realm instance = Realm.getDefaultInstance();
+        RealmResults<WorkoutSchema> workoutSchemaRealmResults = instance.where(WorkoutSchema.class).findAll();
+
+//        if(workoutSchemaRealmResults.size() == 0){
+//
+//        }
+
+        for(WorkoutSchema schema: workoutSchemaRealmResults){
+            workoutData.add(schema);
+            adapter.notifyItemInserted(workoutData.size()-1);
+        }
     }
 
 

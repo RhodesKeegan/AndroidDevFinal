@@ -31,4 +31,11 @@ public class WeightList extends RealmObject {
 
     }
 
+    @Override
+    public String toString() {
+        return "WeightList{" +
+                "name='" + name + '\'' +
+                ", weightUsed=" + weightUsed +
+                '}';
+    }
 }

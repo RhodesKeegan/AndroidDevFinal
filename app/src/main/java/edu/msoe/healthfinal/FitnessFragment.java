@@ -59,6 +59,10 @@ public class FitnessFragment extends Fragment implements SensorEventListener {
             Bundle savedInstanceState
     ) {
 
+        if(savedInstanceState != null){
+            workoutIndex = savedInstanceState.getInt("workoutIndex");
+        }
+
 
         binding = FitnessFragmentBinding.inflate(inflater, container, false);
 
@@ -74,7 +78,7 @@ public class FitnessFragment extends Fragment implements SensorEventListener {
         String name = exercises.get(workoutIndex).getName();
         int sets = exercises.get(workoutIndex).getSets();
         int reps = exercises.get(workoutIndex).getReps();
-        workoutIndex++;
+
 
 
 
@@ -83,6 +87,16 @@ public class FitnessFragment extends Fragment implements SensorEventListener {
         binding.exerciseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                    int weightUsed = Integer.parseInt(binding.weightUsedExercise.getText().toString());
+                    HashMap<Exercise, Integer> weights = new HashMap<>();
+                    weights.put(exercises.get(workoutIndex), weightUsed);
+                    exerciseWeightsUsed.add(weights);
+
+                    binding.weightUsedExercise.setText("");
+
+                    workoutIndex++;
                 if(workoutIndex == exercises.size()){
                     binding.currentWorkout.setText("You completed all of today's workouts!");
                     binding.exerciseButton.setEnabled(false);
@@ -94,19 +108,16 @@ public class FitnessFragment extends Fragment implements SensorEventListener {
                     int sets = exercises.get(workoutIndex).getSets();
                     int reps = exercises.get(workoutIndex).getReps();
                     binding.currentWorkout.setText(name + "\n"+sets+"x"+reps);
-
-                    int weightUsed = Integer.parseInt(binding.weightUsedExercise.getText().toString());
-                    HashMap<Exercise, Integer> weights = new HashMap<>();
-                    weights.put(exercises.get(workoutIndex), weightUsed);
-                    exerciseWeightsUsed.add(weights);
-
-                    binding.weightUsedExercise.setText("");
-
-
-
-                    workoutIndex++;
                 }
-                if(!halfWay &&workoutIndex > exercises.size()/2){
+
+
+
+
+
+
+
+
+                if(!halfWay &&workoutIndex >= exercises.size()/2){
 
                     promptUserToDrink(todayWorkout);
                     halfWay = true;
@@ -119,6 +130,15 @@ public class FitnessFragment extends Fragment implements SensorEventListener {
         return binding.getRoot();
 
     }
+
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("workoutIndex", workoutIndex);
+    }
+
 
     private void insertToDB(int exercisesCompleted){
         Realm realm = Realm.getDefaultInstance();
@@ -150,7 +170,7 @@ public class FitnessFragment extends Fragment implements SensorEventListener {
         String message;
         if(currentAmbientTemp > 32.0){
             message = "It's currently a hot one out there, make sure you get extra water!" +
-                    "\n Drink "+ (todayWorkout.getWaterIntake() * HEAT_MULTIPLIER)/2 + " liters";
+                    " Drink "+ (todayWorkout.getWaterIntake() * HEAT_MULTIPLIER)/2 + " liters";
 
         }else{
             message = "It's time to drink some water, drink " +
